@@ -6,6 +6,6 @@ class NginxUploadModule < Formula
   head 'git://github.com/TimothyKlim/nginx-upload-module.git'
 
   def install
-    puts system "la -ls"
+    system "cp ./* #{prefix}/"
   end
 end
