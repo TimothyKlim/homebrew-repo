@@ -5,8 +5,6 @@ class NginxUploadModule < Formula
 
   head 'git://github.com/TimothyKlim/nginx-upload-module.git'
 
-  depends_on 'nginx'
-  
   def install
   end
 end
