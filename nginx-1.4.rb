@@ -64,7 +64,7 @@ class Nginx14 < Formula
     args << "--with-debug" if build.include? 'with-debug'
     args << "--with-http_spdy_module" if build.include? 'with-spdy'
     args << "--with-http_gunzip_module" if build.include? 'with-gunzip'
-    args << "--add-module=#{nginx_um.opt_prefix}" if build.include? 'with-upload-module'
+    args << "--add-module=#{nginx_um.prefix}" if build.include? 'with-upload-module'
 
     if build.head?
       system "./auto/configure", *args
