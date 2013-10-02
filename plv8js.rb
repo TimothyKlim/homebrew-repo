@@ -9,8 +9,8 @@ class Plv8js < Formula
 
   head 'https://code.google.com/p/plv8js.git'
 
-  depends_on :v8
-  depends_on :postgresql
+  depends_on 'v8'
+  depends_on 'postgresql'
 
   def install
     ENV.prepend 'PATH', Formula.factory('postgresql').bin, ':'
