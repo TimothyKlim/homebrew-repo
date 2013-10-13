@@ -13,7 +13,14 @@ class Plv8js < Formula
   depends_on 'postgresql'
 
   def install
+    ENV.prepend 'PATH', Formula.factory('postgresql').bin, ':'
+    system 'pg_config'
     system "make"
-    system "make", "PREFIX=#{prefix}", "install"
+    system "make install"
+  end
+ 
+  def test
+    ENV.prepend 'PATH', Formula.factory('postgresql').bin, ':'
+    system "make installcheck"
   end
 end
