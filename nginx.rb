@@ -2,8 +2,8 @@ require 'formula'
 
 class Nginx < Formula
   homepage 'http://nginx.org/'
-  url 'http://nginx.org/download/nginx-1.4.0.tar.gz'
-  sha1 'a4343ed201b99d93ff06843600f3175270cb0a94'
+  url 'http://nginx.org/download/nginx-1.4.1.tar.gz'
+  sha1 '9c72838973572323535dae10f4e412d671b27a7e'
 
   head 'svn://svn.nginx.org/nginx/trunk/'
 
@@ -39,6 +39,7 @@ class Nginx < Formula
 
   def install
     nginx_um = Formula.factory 'nginx-upload-module'
+    nginx_rm = Formula.factory 'nginx-rtmp-module'
     
     args = ["--prefix=#{prefix}",
             "--with-http_ssl_module",
@@ -65,6 +66,7 @@ class Nginx < Formula
     args << "--with-http_spdy_module" if build.include? 'with-spdy'
     args << "--with-http_gunzip_module" if build.include? 'with-gunzip'
     args << "--add-module=#{nginx_um.prefix}" if build.include? 'with-upload-module'
+    args << "--add-module=#{nginx_rm.prefix}" if build.include? 'with-rtmp-module'
 
     if build.head?
       system "./auto/configure", *args
